@@ -167,6 +167,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\eset.jpg" />
+    <Content Include="images\gow.jpg" />
+    <Content Include="images\ps5.jpg" />
+    <Content Include="images\rdr2.jpg" />
+    <Content Include="images\win11.jpg" />
+    <Content Include="images\xbox.png" />
     <Content Include="Models\GenesisModel1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>GenesisModel1.edmx</DependentUpon>
