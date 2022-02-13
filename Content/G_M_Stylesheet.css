@@ -1,13 +1,15 @@
 
 .row .menuall {
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-radius: 10px;
+    margin-bottom: 10px ;
 }
 
 
 .menuall img {
     width: 100%;
-    height: 50%;
+    height: 100%;
     border-radius: 15px;
 }
 
