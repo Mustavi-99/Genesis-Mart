@@ -4,15 +4,14 @@
     ViewBag.Title = "Login";
 }
 
-<h2>Login</h2>
+<h1 class="text-center mt-1">Login</h1>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-<div class="form-horizontal">
-    <h4>Customer</h4>
-    <hr />
+<div class="form-horizontal registerpage">
+    <h2>Customer</h2>
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
         <div class="control-label col-md-2">
@@ -32,9 +31,9 @@
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group mt-3">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Login" class="btn btn-primary" />
+            <input type="submit" value="Login" class="btn-lg btn-primary" />
         </div>
     </div>
 
