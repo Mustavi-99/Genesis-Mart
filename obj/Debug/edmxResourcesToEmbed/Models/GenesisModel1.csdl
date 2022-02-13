@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GenesisMartModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CUSEmail" />
+    </Key>
+    <Property Name="CUSEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CUSName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CUSPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CUSContactNo" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="CUSAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="PRID" />
+    </Key>
+    <Property Name="PRID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PRName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="PRImage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PRType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="PRDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PRPrize" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="PRRating" Type="Decimal" Precision="3" Scale="2" />
+    <Property Name="PRQuantity" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="GenesisMartEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+  </EntityContainer>
+</Schema>

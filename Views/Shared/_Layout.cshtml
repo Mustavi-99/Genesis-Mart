@@ -19,32 +19,50 @@
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">
+                        <a class="nav-link" href="/Home/Index">
                             Home
                             <span class="visually-hidden">(current)</span>
                         </a>
                     </li>
+                    @if (Session["CUSName"] != null)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Menu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Rental</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Order</a>
+                        </li>
+                    }
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Menu</a>
+                        <a class="nav-link" href="/Home/Contact">Contact Us</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Rental</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Order</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Devs Corner</a>
-                    </li>
+                    
+                    @*<li class="nav-item">
+            <a class="nav-link" href="#">Devs Corner</a>
+        </li>*@
+                </ul>
+                <ul class="nav navbar-nav" style="float:right !important">
+                    @if (Session["CUSName"] != null)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Accounts/">@Session["CUSName"]</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Home/Logout">Logout</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Home/Register">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Home/Login">Login</a>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>

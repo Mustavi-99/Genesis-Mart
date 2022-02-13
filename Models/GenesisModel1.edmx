@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GenesisMartModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CUSEmail" />
+          </Key>
+          <Property Name="CUSEmail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CUSName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CUSPassword" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CUSContactNo" Type="varchar" MaxLength="11" />
+          <Property Name="CUSAddress" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="PRID" />
+          </Key>
+          <Property Name="PRID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRName" Type="varchar" MaxLength="20" />
+          <Property Name="PRImage" Type="varchar" MaxLength="50" />
+          <Property Name="PRType" Type="varchar" MaxLength="20" />
+          <Property Name="PRDescription" Type="varchar" MaxLength="100" />
+          <Property Name="PRPrize" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="PRRating" Type="numeric" Precision="3" Scale="2" />
+          <Property Name="PRQuantity" Type="int" />
+        </EntityType>
+        <EntityContainer Name="GenesisMartModelStoreContainer">
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GenesisMartModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CUSEmail" />
+          </Key>
+          <Property Name="CUSEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CUSName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CUSPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CUSContactNo" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="CUSAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="PRID" />
+          </Key>
+          <Property Name="PRID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PRImage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PRType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PRDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PRPrize" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="PRRating" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="PRQuantity" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="GenesisMartEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GenesisMartModelStoreContainer" CdmEntityContainer="GenesisMartEntities">
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="GenesisMartModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="CUSEmail" ColumnName="CUSEmail" />
+                <ScalarProperty Name="CUSName" ColumnName="CUSName" />
+                <ScalarProperty Name="CUSPassword" ColumnName="CUSPassword" />
+                <ScalarProperty Name="CUSContactNo" ColumnName="CUSContactNo" />
+                <ScalarProperty Name="CUSAddress" ColumnName="CUSAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="GenesisMartModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="PRID" ColumnName="PRID" />
+                <ScalarProperty Name="PRName" ColumnName="PRName" />
+                <ScalarProperty Name="PRImage" ColumnName="PRImage" />
+                <ScalarProperty Name="PRType" ColumnName="PRType" />
+                <ScalarProperty Name="PRDescription" ColumnName="PRDescription" />
+                <ScalarProperty Name="PRPrize" ColumnName="PRPrize" />
+                <ScalarProperty Name="PRRating" ColumnName="PRRating" />
+                <ScalarProperty Name="PRQuantity" ColumnName="PRQuantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

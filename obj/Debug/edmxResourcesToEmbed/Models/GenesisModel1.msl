@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GenesisMartModelStoreContainer" CdmEntityContainer="GenesisMartEntities">
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="GenesisMartModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="CUSEmail" ColumnName="CUSEmail" />
+          <ScalarProperty Name="CUSName" ColumnName="CUSName" />
+          <ScalarProperty Name="CUSPassword" ColumnName="CUSPassword" />
+          <ScalarProperty Name="CUSContactNo" ColumnName="CUSContactNo" />
+          <ScalarProperty Name="CUSAddress" ColumnName="CUSAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="GenesisMartModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="PRID" ColumnName="PRID" />
+          <ScalarProperty Name="PRName" ColumnName="PRName" />
+          <ScalarProperty Name="PRImage" ColumnName="PRImage" />
+          <ScalarProperty Name="PRType" ColumnName="PRType" />
+          <ScalarProperty Name="PRDescription" ColumnName="PRDescription" />
+          <ScalarProperty Name="PRPrize" ColumnName="PRPrize" />
+          <ScalarProperty Name="PRRating" ColumnName="PRRating" />
+          <ScalarProperty Name="PRQuantity" ColumnName="PRQuantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
