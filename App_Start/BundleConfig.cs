@@ -25,7 +25,9 @@ namespace Genesis_Mart
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                        "~/Content/all.min.css",
-                        "~/Content/G_M_Stylesheet.css"
+                        "~/Content/G_M_Stylesheet.css",
+                        "~/Content/font-awesome.min.css",
+                        "~/Content/font-awesome.css"
                       ));
         }
     }
