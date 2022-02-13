@@ -12,8 +12,9 @@ namespace Genesis_Mart.Controllers
 
         GenesisMartEntities db = new GenesisMartEntities();
         public ActionResult Index()
-        {
-            return View();
+        {   
+            List<Product> products = db.Products.ToList();
+            return View(products);
         }
 
         public ActionResult Register()
