@@ -28,7 +28,7 @@ Values('mustavi.sadim99@gmail.com','mustavi','12345')
 
 
 Insert into Customer
-Values('sanjay39@gmail.com','sanjay','123456')
+Values('sanjay152@gmail.com','sanjay','123456')
 
 Insert into Product(PRName,PRImage,PRType,PRDescription,PRPrize,PRRating,PRQuantity)
 Values('God of war','~/images/gow.jpg','Games','God of War (also known as God of War IV) is the sequel to God of War III as well as a continuation of the canon God of War chronology. God of War is the eighth installment in the franchise overall.Unlike previous installments, this game focuses on Norse mythology and follows an older and more seasoned Kratos and his new son Atreus in the years since God of War III. The game released on April 20, 2018, and is currently exclusive to the PlayStation 4.',5000.00,5,5),
