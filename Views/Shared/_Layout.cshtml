@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">Genesis Mart</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">
+                            Home
+                            <span class="visually-hidden">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Rental</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Order</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Devs Corner</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class=" body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <div class="footer_wrapper bg-dark bg-primary fit-content">
+                <div class="container">
+                    <div class="row pt-3">
+                        <div class="col-md-4 text-center footerimg">
+                            @*<img src="images/Login/deshi.png">*@
+                            <h1>Genesis Mart</h1>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <p>
+                                <a class="footwrite" href="">Home</a>
+                            </p>
+                            <p>
+                                <a class="footwrite" href="">Menu</a>
+                            </p>
+                            <p>
+                                <a class="footwrite" href="">Rental</a>
+                            </p>
+                            <p>
+                                <a class="footwrite" href="">Register</a>
+                            </p>
+                            <p>
+                                <a class="footwrite" href="#">Order</a>
+                            </p>
+                            <p>
+                                <a class="footwrite" href="#">About</a>
+                            </p>
+                            <p>
+                                <a class="footwrite" href="#">Devs Corner</a>
+                            </p>
+                            <p>
+                                <a class="footwrite" href="#">Contact Us</a>
+                            </p>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <p>
+                                <a href="#"><i class="fab fa-facebook footicons"></i></a>
+                            </p>
+                            <p>
+                                <a href="#"><i class="fab fa-instagram-square footicons"></i></a>
+                            </p>
+                            <p>
+                                <a href="#"><i class="fab fa-linkedin-in footicons"></i></a>
+                            </p>
+                            <p>
+                                <a href="#"><i class="fab fa-twitter footicons"></i></a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <p class="text-center last">ALL RIGHTS RESERVED BY........</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
