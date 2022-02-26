@@ -13,6 +13,8 @@
     border-radius: 15px;
 }
 
+
+
 .itemheading {
     font-size: 100%;
     font-weight: bold;
@@ -21,17 +23,19 @@
     color: wheat;
 }
 
-.itemdes {
+
+.itemdes{
     font-size: 15px;
     padding-right: 10px;
     padding-left: 10px;
     color: lavender;
 }
 
+
 .addalliconsp {
     padding-left: 20px;
     padding-right: 20px;
-    font-size: 15px;
+    font-size: 20px;
     color: rgb(167, 248, 235);
 }
 
@@ -52,10 +56,10 @@
     border-radius: 50%;
 }
 
-    .minusplus:hover {
-        background: indianred;
-        color: ivory;
-    }
+.minusplus:hover {
+    background: indianred;
+    color: ivory;
+}
 
 .addallicons {
     color: rgb(231, 218, 218);
@@ -65,19 +69,19 @@
     display: flex;
     border-style: none;
     align-items: baseline;
+    text-align:center;
     justify-content: center;
     background-color: black;
     color: #86C232;
-    padding-top: 5%;
     border-radius: 15px;
     width: 100%;
     font-size: 18px;
 }
 
-    .addtocart:hover {
-        background: indianred;
-        color: ivory;
-    }
+.addtocart:hover {
+    background: indianred;
+    color: ivory;
+}
 
 
 
@@ -114,10 +118,10 @@
     border-radius: 30px;
 }
 
-    .viewmore:hover {
-        color: lightgoldenrodyellow;
-        background-color: indianred;
-    }
+.viewmore:hover {
+    color: lightgoldenrodyellow;
+    background-color: indianred;
+}
 
 .arrow {
     font-size: 20px;
@@ -128,3 +132,9 @@
 .registerpage{
     margin-left: 210px;
 }
+
+
+
+
+/*Product Preview page starts from here....*/
+

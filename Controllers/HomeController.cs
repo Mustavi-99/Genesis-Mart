@@ -77,6 +77,16 @@ namespace Genesis_Mart.Controllers
             return View();
         }
 
+        public ActionResult ProductPreview()
+        {
+            return View();
+        }
+
+        public ActionResult ProductPage()
+        {
+            return View();
+        }
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
