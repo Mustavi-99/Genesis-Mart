@@ -1,49 +1,55 @@
-﻿
+﻿@model List<Genesis_Mart.Models.Product>
 @{
     ViewBag.Title = "ProductPage";
     @Styles.Render("~/Content/css");
 }
 <div class="container">
-    <div class="row">
-        <h2 class="m-3">Most Recent ProductName</h2>
-    </div>
-    <div class="row">
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 menuall bg-gradient bg-opacity-75 rounded-bottom">
-            <div class="Items">
-                <img src="~/images/gow.jpg">
-                <div class="allthings">
-                    <p class="itemheading">itemhead<p>
-                    <p class="itemdes">Itemdes</p>
-                    <div class="add d-inline-flex">
-                        <p class="addalliconsp">Prize/=</p>
+    @*<div class="row">
+            <h2 class="m-3">Most Recent ProductName</h2>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 menuall bg-gradient bg-opacity-75 rounded-bottom">
+                <div class="Items">
+                    <img src="~/images/gow.jpg">
+                    <div class="allthings">
+                        <p class="itemheading">itemhead<p>
+                        <p class="itemdes">Itemdes</p>
+                        <div class="add d-inline-flex">
+                            <p class="addalliconsp">Prize/=</p>
+                        </div>
+                        <button class="addtocart">
+                            <p class="">Details</p>
+                        </button>
                     </div>
-                    <button class="addtocart">
-                        <p class="">Details</p>
-                    </button>
                 </div>
             </div>
         </div>
-    </div>
-    <hr />
+        <hr />*@
     <div class="row">
-        <h2 class="m-3">All Products</h2>
+        <h2 class="m-3">@ViewBag.productCategory</h2>
     </div>
     <div class="row">
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 menuall bg-gradient bg-opacity-75 rounded-bottom">
-            <div class="Items">
-                <img src="~/images/gow.jpg">
-                <div class="allthings">
-                    <p class="itemheading">itemhead<p>
-                    <p class="itemdes">Itemdes</p>
-                    <div class="add d-inline-flex">
-                        <p class="addalliconsp">Prize/=</p>
+        @foreach (var item in Model)
+        {
+            <div class="col-12 col-sm-6 col-md-3 col-lg-3 col-xl-3 menuall bg-gradient bg-opacity-75 rounded-bottom">
+                    <div class="Items">
+                        <img src="~/images/@item.PRImage">
+                        <div class="allthings">
+                            <p class="itemheading">@item.PRName<p>
+                            <p class="itemdes">@item.PRDescription.Substring(0, 100) .....</p>
+                            <div class="add d-inline-flex">
+                                <p class="addalliconsp">@item.PRPrize/=</p>
+                            </div>
+                            @*<button class="addtocart">
+            <p class="">Details</p>
+        </button>*@
+                            <button class="addtocart" onclick="location.href='/Home/ProductPreview/@item.PRID'">
+                                <p class="">Details</p>
+                            </button>
+                        </div>
                     </div>
-                    <button class="addtocart">
-                        <p class="">Details</p>
-                    </button>
                 </div>
-            </div>
-        </div>
+        }
     </div>
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">

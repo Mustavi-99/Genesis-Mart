@@ -8,7 +8,10 @@
 <div class="container">
     <h3 class="text-center mt-3">Games</h3>
     <div class="row">
-        @foreach (var item in Model)
+        @{
+            int i = 0;
+        } 
+        @foreach(var item in Model)
         {
             if (item.PRType.Equals("Games"))
             {
@@ -30,19 +33,23 @@
                                         </button>
                                     </div>*@
                             </div>
-                                <button class="addtocart" onclick="location.href='/Home/Index/@item.PRID'">
+                                <button class="addtocart" onclick="location.href='/Home/ProductPreview/@item.PRID'">
                                     <p class="">Details</p>
                                 </button>
                         </div>
                     </div>
                 </div>
+                i++;
             }
+            if (i == 4)
+            {
 
-
+                break;
+            }
         }
 
     </div>
-    <button class="viewmore" onclick="location.href='/Home/Index/Games'">
+    <button class="viewmore" onclick="location.href='/Home/ProductPage?category=Games'">
         <p class="">
             VIEW MORE
             <i class="fa fa-arrow-right"></i>
@@ -53,6 +60,9 @@
 
     <h3 class="text-center mt-3">Consoles</h3>
     <div class="row">
+        @{
+            i = 0;
+        }
         @foreach (var item in Model)
         {
             if (item.PRType.Equals("Console"))
@@ -66,28 +76,32 @@
                             <div class="add d-inline-flex">
                                 <p class="addalliconsp">@item.PRPrize/=</p>
                                 @*<div class="addall">
-                                        <button class="minusplus">
-                                            <i class="addallicons fa fa-minus quantity"></i>
-                                        </button>
-                                        <p class="addalliconsp">1</p>
-                                        <button class="minusplus">
-                                            <i class="addallicons fa fa-plus"></i>
-                                        </button>
-                                    </div>*@
+                                    <button class="minusplus">
+                                        <i class="addallicons fa fa-minus quantity"></i>
+                                    </button>
+                                    <p class="addalliconsp">1</p>
+                                    <button class="minusplus">
+                                        <i class="addallicons fa fa-plus"></i>
+                                    </button>
+                                </div>*@
                             </div>
-                            <button class="addtocart" onclick="location.href='/Home/Index/@item.PRID'">
+                            <button class="addtocart" onclick="location.href='/Home/ProductPreview/@item.PRID'">
                                 <p class="">Details</p>
                             </button>
                         </div>
                     </div>
                 </div>
+                i++;
             }
+            if (i == 4)
+            {
 
-
+                break;
+            }
         }
 
     </div>
-    <button class="viewmore" onclick="location.href='/Home/Index/Consoles'">
+    <button class="viewmore" onclick="location.href='/Home/ProductPage?category=Console'">
         <p class="">
             VIEW MORE
             <i class="fa fa-arrow-right"></i>
@@ -98,6 +112,9 @@
 
     <h3 class="text-center mt-3">Softwares</h3>
     <div class="row">
+        @{
+            i = 0;
+        }
         @foreach (var item in Model)
         {
             if (item.PRType.Equals("Software"))
@@ -111,28 +128,32 @@
                             <div class="add d-inline-flex">
                                 <p class="addalliconsp">@item.PRPrize/=</p>
                                 @*<div class="addall">
-                                        <button class="minusplus">
-                                            <i class="addallicons fa fa-minus quantity"></i>
-                                        </button>
-                                        <p class="addalliconsp">1</p>
-                                        <button class="minusplus">
-                                            <i class="addallicons fa fa-plus"></i>
-                                        </button>
-                                    </div>*@
+                                    <button class="minusplus">
+                                        <i class="addallicons fa fa-minus quantity"></i>
+                                    </button>
+                                    <p class="addalliconsp">1</p>
+                                    <button class="minusplus">
+                                        <i class="addallicons fa fa-plus"></i>
+                                    </button>
+                                </div>*@
                             </div>
-                            <button class="addtocart" onclick="location.href='/Home/Index/@item.PRID'">
+                            <button class="addtocart" onclick="location.href='/Home/ProductPreview/@item.PRID'">
                                 <p class="">Details</p>
                             </button>
                         </div>
                     </div>
                 </div>
+                i++;
             }
+            if (i == 4)
+            {
 
-
+                break;
+            }
         }
 
     </div>
-    <button class="viewmore" onclick="location.href='/Home/Index/Softwares'">
+    <button class="viewmore" onclick="location.href='/Home/ProductPage?category=Software'">
         <p class="">
             VIEW MORE
             <i class="fa fa-arrow-right"></i>

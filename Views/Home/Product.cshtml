@@ -1,0 +1,12 @@
+﻿﻿@model Object[]
+@{
+    ViewBag.Title = "Product";
+    var Product = (Genesis_Mart.Models.Product)Model[0];
+    var comment = (List<Genesis_Mart.Models.Comment>)Model[1];
+}
+<h2>Product</h2>
+@Product.PRImage;
+@foreach (var item in comment)
+{
+    @item.id;
+}
