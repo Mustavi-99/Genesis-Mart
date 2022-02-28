@@ -12,7 +12,7 @@ namespace Genesis_Mart.Controllers
 
         GenesisMartEntities db = new GenesisMartEntities();
         public ActionResult Index()
-        {   
+        { 
             List<Product> products = db.Products.ToList();
             return View(products);
         }
@@ -25,6 +25,18 @@ namespace Genesis_Mart.Controllers
         [HttpPost]
         public ActionResult Register(Customer customer)
         {
+            if (!customer.CUSEmail.EndsWith(".com"))
+            {
+                ViewBag.Notification = "Email Format Incorrect";
+                return View();
+            }
+            System.Diagnostics.Debug.WriteLine(customer.CUSContactNo.Length);
+            if (customer.CUSContactNo.Length != 11 || !customer.CUSContactNo.StartsWith("01"))
+            {
+                System.Diagnostics.Debug.WriteLine("Check");
+                ViewBag.Notification = "Contact Number is invalid";
+                return View();
+            }
             if (db.Customers.Any(x => x.CUSEmail == customer.CUSEmail || x.CUSName == customer.CUSName))
             {
                 ViewBag.Notification = "This account has already existed";
@@ -57,7 +69,8 @@ namespace Genesis_Mart.Controllers
             {
                 Session["CUSName"] = checklogin.CUSName;
                 Session["CUSEmail"] = customer.CUSEmail.ToString();
-                return RedirectToAction("Index", "Home");
+                ViewBag.Login = "login check";
+                //return RedirectToAction("Index", "Home");
             }
             else
             {
@@ -77,14 +90,43 @@ namespace Genesis_Mart.Controllers
             return View();
         }
 
-        public ActionResult ProductPreview()
+        public ActionResult ProductPreview(int id)
         {
-            return View();
+            //if (Session["CUSName"] != null)
+            //{
+                Product product = db.Products.Where(temp => temp.PRID.Equals(id)).SingleOrDefault();
+                return View(product);
+            //}
+            //else
+            //{
+            //    ViewBag.user = "Please Log In First";
+            //    return View();
+            //}
+            
         }
 
-        public ActionResult ProductPage()
+        public ActionResult ProductPage(string category)
         {
-            return View();
+            List<Product> products;
+            if (category == null)
+            {
+                products = db.Products.ToList();
+                ViewBag.productCategory = "All Products";
+            }
+            else
+            {
+                products = db.Products.Where(temp => temp.PRType.Equals(category)).ToList();
+                ViewBag.productCategory = category;
+            }
+            return View(products);
+        }
+
+        public ActionResult Product(int id)
+        {
+            Product product = db.Products.Where(temp => temp.PRID.Equals(id)).SingleOrDefault();
+            //List<Comment> comments =  Comments.Where(temp => temp.CommentID.Equals(id)).toList();
+            //return View(new object[] {product,comments});
+            return View(product);
         }
 
         public ActionResult Contact()
@@ -93,5 +135,6 @@ namespace Genesis_Mart.Controllers
 
             return View();
         }
+
     }
 }

@@ -71,6 +71,7 @@
     align-items: baseline;
     text-align:center;
     justify-content: center;
+    padding-top:10px;
     background-color: black;
     color: #86C232;
     border-radius: 15px;
@@ -133,7 +134,12 @@
     margin-left: 210px;
 }
 
-
+.addalliconspqua {
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 20px;
+    color: rgb(127, 248, 235);
+}
 
 
 /*Product Preview page starts from here....*/
