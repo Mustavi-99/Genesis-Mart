@@ -46,10 +46,28 @@
 
 @if (ViewBag.Login != null)
 {
-   <script type="text/javascript">
+    <script type="text/javascript">
 
-        window.onload= function () {
-            alert("Logged in");
+               window.onload = function () {
+           alert("@ViewBag.Login");
+            window.location.href = "Index";
+        };
+    </script>
+}
+@if (ViewBag.user != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@ViewBag.user");
+            window.location.href = "Index";
+        };
+    </script>
+}
+@if (ViewBag.loggedIn != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@ViewBag.loggedIn");
             window.location.href = "Index";
         };
     </script>

@@ -15,10 +15,10 @@
       <PropertyRef Name="PRID" />
     </Key>
     <Property Name="PRID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="PRName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="PRName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="PRImage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="PRType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="PRDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PRDescription" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
     <Property Name="PRPrize" Type="Decimal" Precision="8" Scale="2" />
     <Property Name="PRRating" Type="Decimal" Precision="3" Scale="2" />
     <Property Name="PRQuantity" Type="Int32" />
@@ -26,5 +26,15 @@
   <EntityContainer Name="GenesisMartEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Customers" EntityType="Self.Customer" />
     <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="ContactUs" EntityType="GenesisMartModel.ContactU" />
   </EntityContainer>
+  <EntityType Name="ContactU">
+    <Key>
+      <PropertyRef Name="ContactID" />
+    </Key>
+    <Property Name="ContactID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ContactMessage" Type="String" Nullable="false" MaxLength="5000" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

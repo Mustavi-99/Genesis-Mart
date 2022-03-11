@@ -7,6 +7,7 @@
       <Diagram DiagramId="9ce444ba7859407690f5eab2df6ab0af" Name="Diagram1">
         <EntityTypeShape EntityType="GenesisMartModel.Customer" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GenesisMartModel.Product" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GenesisMartModel.ContactU" Width="1.5" PointX="5" PointY="1.125" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

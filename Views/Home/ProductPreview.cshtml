@@ -44,11 +44,13 @@
             </button>
         </div>
     </div>
-    <div class="form-floating mt-3 mb-1">
-        <textarea class="form-control cotext" id="floatingTextarea">Leave us a comment.</textarea>
-    </div>
+    <form>
+        <div class="form-floating mt-3 mb-1">
+            <textarea class="form-control cotext" id="floatingTextarea" placeholder="Leave us a comment."></textarea>
+        </div>
+    </form>
     <button type="button" class="btn btn-success">Comment</button>
-    <button type="button" class="btn btn-secondary">Edit</button>
+   @* <button type="button" class="btn btn-secondary">Edit</button>*@
     <div class="row">
         <div class="col-xl-5">
             <h2 class="headcomment">Comments</h2>
@@ -61,3 +63,12 @@
         </div>
     </div>
 </div>
+@if (ViewBag.user != null)
+{
+<script type="text/javascript">
+        window.onload = function () {
+            alert("@ViewBag.user");
+            window.location.href = "../Login";
+        };
+</script>
+}

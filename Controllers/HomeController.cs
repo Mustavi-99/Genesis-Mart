@@ -57,6 +57,10 @@ namespace Genesis_Mart.Controllers
 
         public ActionResult Login()
         {
+            if (Session["CUSName"] != null)
+            {
+                ViewBag.loggedIn = "User already logged in";
+            }
             return View();
         }
 
@@ -69,7 +73,7 @@ namespace Genesis_Mart.Controllers
             {
                 Session["CUSName"] = checklogin.CUSName;
                 Session["CUSEmail"] = customer.CUSEmail.ToString();
-                ViewBag.Login = "login check";
+                ViewBag.Login = "Logged In";
                 //return RedirectToAction("Index", "Home");
             }
             else
@@ -92,16 +96,12 @@ namespace Genesis_Mart.Controllers
 
         public ActionResult ProductPreview(int id)
         {
-            //if (Session["CUSName"] != null)
-            //{
-                Product product = db.Products.Where(temp => temp.PRID.Equals(id)).SingleOrDefault();
+            if (Session["CUSName"] == null)
+            {
+                ViewBag.user = "Please Log In First";
+            }
+            Product product = db.Products.Where(temp => temp.PRID.Equals(id)).SingleOrDefault();
                 return View(product);
-            //}
-            //else
-            //{
-            //    ViewBag.user = "Please Log In First";
-            //    return View();
-            //}
             
         }
 
@@ -131,7 +131,18 @@ namespace Genesis_Mart.Controllers
 
         public ActionResult ContactUs()
         {
-            return View();
+            ContactU contactUs = new ContactU();
+            if (Session["CUSName"] != null)
+            {
+                Customer customer = db.Customers.Where(temp=> temp.CUSEmail.Equals(Session["CUSEmail"])).SingleOrDefault();
+                contactUs.Email = customer.CUSEmail;
+                contactUs.FullName = customer.CUSName;
+            }else
+            {
+                contactUs.Email = "";
+                contactUs.FullName = "";
+            }
+            return View(contactUs);
         }
 
     }
