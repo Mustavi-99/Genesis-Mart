@@ -178,3 +178,61 @@
     resize: none;
 }
 
+
+
+
+
+
+
+
+
+
+
+/* Contact.css..........*/
+
+.contact {
+    max-height: 1000px;
+    height: 500px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.bodybg{
+}
+
+
+.Incontact{
+    margin-left: 100px;
+    margin-top: 50px;
+}
+
+.headcontact{
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bolder;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.textcontact{
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bolder;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: cadetblue;
+}
+
+
+.contactemail {
+    color: aquamarine;
+    font-size: 30px;
+    font-family: 'Arial Rounded MT';
+}
+
+.contactwrite{
+    margin-left: 50px;
+    font-size: 20px;
+    color: cornflowerblue;
+}
