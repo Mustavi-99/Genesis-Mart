@@ -141,6 +141,40 @@
     color: rgb(127, 248, 235);
 }
 
+::placeholder{
+    color: red;
+    opacity: .3;
+}
+
 
 /*Product Preview page starts from here....*/
+
+.Cuscomment {
+    color: blueviolet;
+    font-size: 20px;
+    margin-left: 50px;
+}
+
+.Cusname {
+    color: indianred;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.headcomment{
+    margin-top: 15px;
+    font-weight: bold;
+    color: cadetblue;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.rowcomment{
+    background-color: black;
+    border-radius: 20px;
+    opacity: .65;
+}
+
+.cotext{
+    resize: none;
+}
 
