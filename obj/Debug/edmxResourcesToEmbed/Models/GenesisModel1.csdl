@@ -27,6 +27,7 @@
     <EntitySet Name="Customers" EntityType="Self.Customer" />
     <EntitySet Name="Products" EntityType="Self.Product" />
     <EntitySet Name="ContactUs" EntityType="GenesisMartModel.ContactU" />
+    <EntitySet Name="Comments" EntityType="GenesisMartModel.Comment" />
   </EntityContainer>
   <EntityType Name="ContactU">
     <Key>
@@ -36,5 +37,14 @@
     <Property Name="FullName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="ContactMessage" Type="String" Nullable="false" MaxLength="5000" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="CommentID" />
+    </Key>
+    <Property Name="CommentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="CustName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CommentMessage" Type="String" Nullable="false" MaxLength="5000" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

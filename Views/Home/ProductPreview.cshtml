@@ -1,31 +1,32 @@
-﻿@model Genesis_Mart.Models.Product
+﻿@model Object[]
 @{
     ViewBag.Title = "ProductPreview";
-
+    var Product = (Genesis_Mart.Models.Product)Model[0];
+    var comments = (List<Genesis_Mart.Models.Comment>)Model[1];
     @Styles.Render("~/Content/css");
 }
 
 <div class="container">
     <div class="row m-5 pt-2">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 menuall">
-            <img src="~/images/@Model.PRImage">
+            <img src="~/images/@Product.PRImage">
         </div>
     </div>
     <div class="row">
         <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12">
 
-            <p class="itemheading allpwrite">@Model.PRName</p>
+            <p class="itemheading allpwrite">@Product.PRName</p>
 
             <div class="d-inline-flex">
                 <p class="addalliconsp">Type</p>
-                <p class="addalliconspqua">@Model.PRType</p>
+                <p class="addalliconspqua">@Product.PRType</p>
             </div>
 
-            <p class="itemdes allpwrite">@Model.PRDescription</p>
+            <p class="itemdes allpwrite">@Product.PRDescription</p>
 
             <div class="d-inline-flex">
                 <p class="addalliconsp">Rating</p>
-                <p class="addalliconspqua">@Model.PRRating</p>
+                <p class="addalliconspqua">@Product.PRRating</p>
             </div>
 
             <div>
@@ -34,22 +35,24 @@
 
             <div class="d-inline-flex ">
                 <p class="addalliconsp">Quantity</p>
-                <p class="addalliconspqua">@Model.PRQuantity</p>
+                <p class="addalliconspqua">@Product.PRQuantity</p>
             </div>
 
-            <p class="addalliconsp allpwrite">@Model.PRPrize /=</p>
+            <p class="addalliconsp allpwrite">@Product.PRPrize /=</p>
 
             <button class="addtocart">
                 <p class="text-align-centre">ADD TO CART</p>
             </button>
         </div>
     </div>
-    <form>
+    <form action="../CommentPost" method="post">
+        <input name="ProductID" value="@Product.PRID" hidden />
         <div class="form-floating mt-3 mb-1">
-            <textarea class="form-control cotext" id="floatingTextarea" placeholder="Leave us a comment."></textarea>
+            <textarea class="form-control cotext" name="CommentMessage" id="floatingTextarea" placeholder="Leave us a comment."></textarea>
         </div>
+        <button type="submit" class="btn btn-success">Comment</button>
     </form>
-    <button type="button" class="btn btn-success">Comment</button>
+    
    @* <button type="button" class="btn btn-secondary">Edit</button>*@
     <div class="row">
         <div class="col-xl-5">
@@ -57,10 +60,14 @@
         </div>
     </div>
     <div class="row rowcomment">
-        <div class="col-xl-12">
-            <h5 class="Cusname">Customer Name</h5>
-            <p class="Cuscomment">Customer Comment</p>
-        </div>
+        @foreach (var item in comments)
+        {
+            <div class="col-xl-12">
+                <h5 class="Cusname">@item.CustName</h5>
+                <p class="Cuscomment">@item.CommentMessage</p>
+            </div>
+        }
+
     </div>
 </div>
 @if (ViewBag.user != null)

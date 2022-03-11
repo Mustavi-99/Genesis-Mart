@@ -1,10 +1,9 @@
-﻿@model @model Genesis_Mart.Models.ContactU
+﻿@model Genesis_Mart.Models.ContactU
 @{
     ViewBag.Title = "ContactUs";
     @Styles.Render("~/Content/css")
 
 }
-
 <div class="bodybg">
     <div>
         <h1 class="headcontact">Contact Us</h1>
@@ -35,15 +34,15 @@
                     <form method="post">
                         <div class="form-group mt-5 mb-3">
                             <label class="mb-2">Full Name</label>
-                            <input type="text" class="form-control" placeholder="" value="@Model.FullName">
+                            <input type="text" name="FullName" class="form-control" placeholder="" value="@Model.FullName" required>
                         </div>
                         <div class="form-group mb-3">
                             <label class="mb-2">Email</label>
-                            <input type="email" class="form-control" placeholder="" value="@Model.Email">
+                            <input type="email" name="Email" class="form-control" placeholder="" value="@Model.Email" required>
                         </div>
                         <div class="form-group mb-3">
                             <label class="mb-2">Message</label>
-                            <textarea class="form-control cotext" id="floatingTextarea" placeholder="What's your say ?"></textarea>
+                            <textarea class="form-control cotext" name="ContactMessage" id="floatingTextarea" placeholder="What's your say ?" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-success">Submit</button>
                     </form>
@@ -52,3 +51,14 @@
         </div>
     </div>
 </div>
+@if (ViewBag.Noti != null)
+{
+
+<script type="text/javascript">
+    window.onload = function () {
+        alert("@ViewBag.Noti");
+        window.location.href = "Index";
+    };
+</script>
+
+}

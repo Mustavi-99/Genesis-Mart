@@ -11,6 +11,8 @@ namespace Genesis_Mart.Controllers
     {
 
         GenesisMartEntities db = new GenesisMartEntities();
+        public static int contactE;
+
         public ActionResult Index()
         { 
             List<Product> products = db.Products.ToList();
@@ -101,8 +103,27 @@ namespace Genesis_Mart.Controllers
                 ViewBag.user = "Please Log In First";
             }
             Product product = db.Products.Where(temp => temp.PRID.Equals(id)).SingleOrDefault();
-                return View(product);
+            List<Comment> comments = db.Comments.Where(temp => temp.ProductID.Equals(id)).ToList();
+            return View(new object[] { product, comments });
+
+        }
+
+        [HttpPost]
+        public ActionResult CommentPost(String ProductID, string CommentMessage)
+        {
+
+            System.Diagnostics.Debug.WriteLine("check: " + ProductID + " " + CommentMessage);
+            int id = Int32.Parse(ProductID);
             
+            Comment comment = new Comment
+            {
+                ProductID = id,
+                CommentMessage = CommentMessage,
+                CustName = Session["CUSName"].ToString()
+            };
+            db.Comments.Add(comment);
+            db.SaveChanges();
+            return RedirectToAction("ProductPreview/" + ProductID);
         }
 
         public ActionResult ProductPage(string category)
@@ -121,20 +142,29 @@ namespace Genesis_Mart.Controllers
             return View(products);
         }
 
-        public ActionResult Product(int id)
-        {
-            Product product = db.Products.Where(temp => temp.PRID.Equals(id)).SingleOrDefault();
-            //List<Comment> comments =  Comments.Where(temp => temp.CommentID.Equals(id)).toList();
-            //return View(new object[] {product,comments});
-            return View(product);
-        }
+        //public ActionResult Product(int id)
+        //{
+        //    Product product = db.Products.Where(temp => temp.PRID.Equals(id)).SingleOrDefault();
+        //    List<Comment> comments = db.Comments.Where(temp=> temp.ProductID.Equals(id)).ToList();
+        //    return View(new object[] { product, comments });
+        //    //return View(product);
+        //}
+
+        
 
         public ActionResult ContactUs()
         {
             ContactU contactUs = new ContactU();
+            System.Diagnostics.Debug.WriteLine(contactE);
+            if(contactE == 1)
+            {
+                contactE = 0;
+                ViewBag.Noti = "Email Format Incorrect";
+            }
             if (Session["CUSName"] != null)
             {
-                Customer customer = db.Customers.Where(temp=> temp.CUSEmail.Equals(Session["CUSEmail"])).SingleOrDefault();
+                string email = Session["CUSEmail"].ToString();
+                Customer customer = db.Customers.Where(temp=> temp.CUSEmail.Equals(email)).SingleOrDefault();
                 contactUs.Email = customer.CUSEmail;
                 contactUs.FullName = customer.CUSName;
             }else
@@ -143,6 +173,21 @@ namespace Genesis_Mart.Controllers
                 contactUs.FullName = "";
             }
             return View(contactUs);
+        }
+
+        [HttpPost]
+        public ActionResult ContactUs(ContactU contactU)
+        {
+            if (!contactU.Email.EndsWith(".com"))
+            {
+                contactE = 1;
+            }
+            else
+            {
+                db.ContactUs.Add(contactU);
+                db.SaveChanges();
+            }
+            return RedirectToAction("ContactUs");
         }
 
     }

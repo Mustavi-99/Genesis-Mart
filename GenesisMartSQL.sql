@@ -37,3 +37,20 @@ Values('God of war','gow.jpg','Games','God of War (also known as God of War IV) 
 	('Xbox Series X','xbox.png','Console','The Xbox Series X has higher end hardware and supports higher display resolutions (up to 8K resolution), along with higher frame rates and real-time ray tracing; it also has a high-speed solid-state drive to reduce loading times.',60000.00,4.53,5),
 	('Microsoft Windows 11','win11.jpg','Software','Windows 11 is the latest major release of the Windows NT operating system developed by Microsoft that was announced on June 24, 2021, and is the successor to Windows 10, which was released in 2015.',13000,0,7),
 	('ESET Antivirus Security','eset.jpg','Software','Explore the great online, securely protected by ESET’s award-winning detection technology. It’s trusted by over 110 million users worldwide to detect and neutralize all types of digital threats, including viruses, rootkits, worms and spyware. It also protects against techniques that seek to evade detection, and blocks targeted attacks and exploits.',1000,3.6,8)
+
+Create table ContactUs(
+	ContactID int primary key identity(10000,1),
+	FullName varchar(50) NOT NULL,
+	Email varchar(50) NOT NULL,
+	ContactMessage varchar(5000) NOT NULL
+)
+drop table ContactUs
+
+Create table Comment(
+CommentID int primary key identity(100,1),
+ProductID int Not Null,
+CustName varchar (50) Not Null,
+CommentMessage varchar(5000) Not Null
+)
+
+drop table Comment
