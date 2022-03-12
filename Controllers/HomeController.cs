@@ -266,5 +266,15 @@ namespace Genesis_Mart.Controllers
             return View();
         }
 
+        public ActionResult AddItem()
+        {
+            return View();
+        }
+
+        public ActionResult DeleteItem()
+        {
+            return View();
+        }
+
     }
 }

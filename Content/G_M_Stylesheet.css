@@ -305,3 +305,17 @@
         color: #ffffff;
         border-color: #25325e;
     }
+
+
+.upload{
+    margin-right: 50px;
+}
+
+input[type="file"]{
+    display: none;
+}
+
+
+.del{
+    text-align:center;
+}
