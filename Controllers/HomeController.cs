@@ -12,6 +12,7 @@ namespace Genesis_Mart.Controllers
 
         GenesisMartEntities db = new GenesisMartEntities();
         public static int contactE;
+        public static List<int> CartItems = new List<int>();
 
         public ActionResult Index()
         { 
@@ -234,6 +235,25 @@ namespace Genesis_Mart.Controllers
             db.SaveChanges();
             Session["CUSName"] = customer.CUSName;
             return RedirectToAction("CustomerProfile");
+        }
+
+        public ActionResult AddToCart(int id)
+        {
+            foreach(var item in CartItems)
+            {
+                System.Diagnostics.Debug.WriteLine(item);
+            }
+            
+            CartItems.Add(id);
+            return RedirectToAction("ProductPreview/"+id);
+        }
+
+        public ActionResult Orders()
+        {
+
+
+
+            return View(CartItems);
         }
     }
 }
