@@ -213,5 +213,17 @@ namespace Genesis_Mart.Controllers
             Session["CUSName"] = customer.CUSName;
             return RedirectToAction("CustomerProfile");
         }
+
+
+        public ActionResult AdminPanel()
+        {
+            return View();
+        }
+
+        public ActionResult UserTable()
+        {
+            return View();
+        }
+
     }
 }

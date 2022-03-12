@@ -252,3 +252,56 @@
     font-size: 16px;
     text-align: left;
 }
+
+
+.adminbutton {
+    text-align: center;
+    font-size: 30px;
+    height: 200px;
+    border-radius: 20px;
+    box-shadow: 10px 10px 8px black;
+}
+
+
+.adminbutton:hover {
+    background-color: black;
+    color: aqua;
+}
+
+.ordertable {
+    text-align: center;
+    box-shadow: 0 5px 10px grey;
+    color: rgb(250, 193, 193);
+}
+
+.orderhead {
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+}
+
+.orderdatas {
+    color: darkgrey;
+    font-size: 15px;
+    text-align: center;
+}
+
+
+.plusMinusButton {
+    padding: 5px 12px 5px 12px;
+    font-size: 13px;
+    border-radius: 10px;
+    border-width: 2px;
+    color: #384f5e;
+    background-color: #7c97c9;
+    border-color: #223349;
+    width: 100%;
+}
+
+    .plusMinusButton:hover,
+    .plusMinusButton:active,
+    .plusMinusButton:focus,
+    .plusMinusButton.active {
+        background: #1f3247;
+        color: #ffffff;
+        border-color: #25325e;
+    }
