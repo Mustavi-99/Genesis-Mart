@@ -98,10 +98,10 @@ namespace Genesis_Mart.Controllers
 
         public ActionResult ProductPreview(int id)
         {
-            if (Session["CUSName"] == null)
-            {
-                ViewBag.user = "Please Log In First";
-            }
+            //if (Session["CUSName"] == null)
+            //{
+            //    ViewBag.user = "Please Log In First";
+            //}
             Product product = db.Products.Where(temp => temp.PRID.Equals(id)).SingleOrDefault();
             List<Comment> comments = db.Comments.Where(temp => temp.ProductID.Equals(id)).ToList();
             return View(new object[] { product, comments });
@@ -193,8 +193,25 @@ namespace Genesis_Mart.Controllers
 
         public ActionResult CustomerProfile()
         {
-            return View();
+            if (Session["CUSEmail"] == null)
+            {
+                ViewBag.NoUser = "User Needs to Log In";  
+            }
+            System.Diagnostics.Debug.WriteLine(Session["CUSName"]);
+            string username = Session["CUSEmail"].ToString();
+            Customer customer = db.Customers.Where(temp => temp.CUSEmail.Equals(username)).SingleOrDefault();
+
+            return View(customer);
         }
 
+        [HttpPost]
+        public ActionResult UpdateProfile(Customer customer)
+        {
+            customer.CUSEmail = Session["CUSEmail"].ToString();
+            db.Entry(customer).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+            Session["CUSName"] = customer.CUSName;
+            return RedirectToAction("CustomerProfile");
+        }
     }
 }

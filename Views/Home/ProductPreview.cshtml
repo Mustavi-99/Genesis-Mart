@@ -45,15 +45,23 @@
             </button>
         </div>
     </div>
-    <form action="../CommentPost" method="post">
-        <input name="ProductID" value="@Product.PRID" hidden />
-        <div class="form-floating mt-3 mb-1">
-            <textarea class="form-control cotext" name="CommentMessage" id="floatingTextarea" placeholder="Leave us a comment."></textarea>
-        </div>
-        <button type="submit" class="btn btn-success">Comment</button>
-    </form>
-    
-   @* <button type="button" class="btn btn-secondary">Edit</button>*@
+    @if (Session["CUSName"] != null)
+    {
+        <form action="../CommentPost" method="post">
+            <input name="ProductID" value="@Product.PRID" hidden />
+            <div class="form-floating mt-3 mb-1">
+                <textarea class="form-control cotext" name="CommentMessage" id="floatingTextarea" placeholder="Leave us a comment."></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">Comment</button>
+        </form>
+            }
+            else
+            {
+                <p>Log In to Comment</p>
+            }
+
+
+    @* <button type="button" class="btn btn-secondary">Edit</button>*@
     <div class="row">
         <div class="col-xl-5">
             <h2 class="headcomment">Comments</h2>
@@ -70,7 +78,7 @@
 
     </div>
 </div>
-@if (ViewBag.user != null)
+@*@if (ViewBag.user != null)
 {
 <script type="text/javascript">
         window.onload = function () {
@@ -78,4 +86,4 @@
             window.location.href = "../Login";
         };
 </script>
-}
+}*@
