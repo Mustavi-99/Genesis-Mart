@@ -126,19 +126,41 @@ namespace Genesis_Mart.Controllers
             return RedirectToAction("ProductPreview/" + ProductID);
         }
 
-        public ActionResult ProductPage(string category)
+        public ActionResult ProductPage(string category,string page)
         {
             List<Product> products;
+            var sql="";
+            int p;
+            if (page==null)
+            {
+                p = 1;
+            }
+            else
+            {
+                p= Int32.Parse(page);
+            }
             if (category == null)
             {
-                products = db.Products.ToList();
+                //products = db.Products.ToList();
+                sql = "Select * from Product";               
                 ViewBag.productCategory = "All Products";
             }
             else
             {
-                products = db.Products.Where(temp => temp.PRType.Equals(category)).ToList();
+                //products = db.Products.Where(temp => temp.PRType.Equals(category)).ToList();
+                sql = "Select * from Product where PRType = '"+category+"' ";
+                ViewBag.Category = category;
                 ViewBag.productCategory = category;
             }
+            products = db.Products.SqlQuery(sql).ToList();
+            var resultPerPage = 3;
+            var pageFirstresult = (p - 1) * resultPerPage;
+            var numberOfresult = products.Count;
+            var numberOfPage = (numberOfresult / resultPerPage);
+            var query = sql + " order by PRID OFFSET "+pageFirstresult+" rows FETCH FIRST "+resultPerPage+" ROWS ONLY";
+            products = db.Products.SqlQuery(query).ToList();
+            ViewBag.Page = p;
+            ViewBag.NumberOfPages = numberOfPage;
             return View(products);
         }
 
