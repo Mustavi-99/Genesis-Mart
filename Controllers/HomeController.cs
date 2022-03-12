@@ -190,5 +190,11 @@ namespace Genesis_Mart.Controllers
             return RedirectToAction("ContactUs");
         }
 
+
+        public ActionResult CustomerProfile()
+        {
+            return View();
+        }
+
     }
 }

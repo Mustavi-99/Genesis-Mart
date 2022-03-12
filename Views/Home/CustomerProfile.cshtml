@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "CustomerProfile";
+    @Styles.Render("~/Content/css")
+}
+
+
+<div class="container userprofileform">
+    <div class="row userprofileformrow">
+        <div class="col-12 col-xl-12 col-lg-12 col-sm-12 col-md-12 userprofiledit ">
+            <div class="userprofileheading mt-4">
+                <h2 class="userprofileheadinguser">Customer's Profile</h2>
+            </div>
+            <form action="">
+                <div class="mb-4 mt-2 userprofilecontents">
+                    <p class="userprofilelabels">Full Name:</p>
+                    <input type="text" placeholder="Full Name" name="userprofilename" value="" class="form-control userformholders" />
+                </div>
+                <!-- **********available Name er ekta variable thakbe... edit button click korle edit kora jabe.*********** -->
+                <div class="mb-4 mt-2 userprofilecontents">
+                    <p class="userprofilelabels">Email:</p>
+                    <input type="email" placeholder="Email" name="userprofileemail" value="" class="form-control userformholders" />
+                </div>
+                <div class="mb-4 mt-2 userprofilecontents">
+                    <p class="userprofilelabels">Contact No:</p>
+                    <input type="text" placeholder="Contact No." name="userprofilecontactno" value="" class="form-control userformholders" />
+                </div>
+                <div class="mb-4 mt-2 userprofilecontents">
+                    <p class="userprofilelabels">Password:</p>
+                    <input type="password" placeholder="Hidden Password" name="userPassword" value="" class="form-control userformholders" />
+                </div>
+
+                <div class="mb-4 mt-2 userprofilecontents">
+                    <p class="userprofilelabels">User Address:</p>
+                    <input type="text" placeholder="User Address" name="useraddress" value="" class="form-control userformholders" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 col-xl-6 col-lg-6 col-sm-12 col-md-6">
+            <button type="submit" class="btn-success rounded-bottom rounded-top w-100 h-100 pt-2 pb-2">Submit</button>
+        </div>
+        <div class="col-6 col-xl-6 col-lg-6 col-sm-12 col-md-6">
+            <button type="submit" class="btn-danger rounded-bottom rounded-top w-100 h-100 pt-2 pb-2">Edit</button>
+        </div>
+    </div>
+</div>
+
+
