@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "AdminPanel";
+    @Styles.Render("~/Content/css")
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="mt-5 mb-2 align-content-center">AdminPanel</h2>
+        </div>
+    </div>
+    <div class="row mt-5 mb-5">
+        <div class="col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <button class="btn btn-success w-100 p-5 mb-4 adminbutton">
+                Contact Us
+            </button>
+        </div>
+        <div class="col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <button class="btn btn-danger w-100 p-5 mb-5 adminbutton" onclick="/Home/UserTable">
+                User Table
+            </button>
+        </div>
+    </div>
+    <div class="row mt-5 mb-5">
+        <div class="col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <button class="btn btn-warning w-100  p-5 mb-5 adminbutton">
+                Rental Service
+            </button>
+        </div>
+        <div class="col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <button class="btn btn-secondary w-100  p-5 mb-5 adminbutton">
+                Add Items
+            </button>
+        </div>
+    </div>
+</div>
+

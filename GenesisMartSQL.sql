@@ -52,5 +52,17 @@ ProductID int Not Null,
 CustName varchar (50) Not Null,
 CommentMessage varchar(5000) Not Null
 )
+Select * from Product
+Select * from Product where PRType = 'Games'
+Select * from Product where PRType = 'Games' order by PRID ASC LIMIT 1
 
+SELECT * FROM 
+(
+    SELECT TOP 1 *, ROW_NUMBER OVER (ORDER BY (SELECT 1)) AS rnum 
+    FROM Product
+) a
+WHERE rnum > 0
+
+SELECT * FROM Product where PRType = 'Games' order by PRID OFFSET 0 rows FETCH FIRST 2 ROWS ONLY
+Select * from Product order by PRID OFFSET 1 rows FETCH FIRST 1 ROWS ONLY
 drop table Comment

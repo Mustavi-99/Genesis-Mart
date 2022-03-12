@@ -255,5 +255,16 @@ namespace Genesis_Mart.Controllers
 
             return View(CartItems);
         }
+
+        public ActionResult AdminPanel()
+        {
+            return View();
+        }
+
+        public ActionResult UserTable()
+        {
+            return View();
+        }
+
     }
 }
