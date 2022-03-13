@@ -239,19 +239,19 @@ namespace Genesis_Mart.Controllers
 
         public ActionResult AddToCart(int id)
         {
-            foreach(var item in CartItems)
-            {
-                System.Diagnostics.Debug.WriteLine(item);
-            }
-            
+
+
             CartItems.Add(id);
-            return RedirectToAction("ProductPreview/"+id);
+            return RedirectToAction("ProductPreview/" + id);
         }
 
         public ActionResult Orders()
         {
 
-
+            foreach (var item in CartItems)
+            {
+                System.Diagnostics.Debug.WriteLine(item);
+            }
 
             return View(CartItems);
         }

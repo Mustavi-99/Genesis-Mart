@@ -1,7 +1,93 @@
-﻿
+﻿@model List<int>
 @{
     ViewBag.Title = "Orders";
+    @Styles.Render("~/Content/css");
 }
 
-<h2>Orders</h2>
+<div class="row">
+    <h2 class="m-3">Orders</h2>
+</div>
 
+
+
+<div class="container ">
+
+    <div class="row allorders">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="table-responsive">
+                <table class="table table-bordered ordertable mt-5">
+                    <thead>
+                        <tr class="text-align-center">
+                            <th scope="col" class="orderhead">Serial No.</th>
+                            <th scope="col" class="orderhead">Item Name and Description</th>
+                            <th scope="col" class="orderhead">Base Price</th>
+                            <th scope="col" class="orderhead">Quantity</th>
+                            <th scope="col" class="orderhead">Total Price</th>
+                            <th scope="col" class="orderhead"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class='orderdatas'>gg</td>
+                                <td class='orderdatas'>gg</td>
+
+                                <td class='orderdatas'>@item<input type='hidden' class='iprice' value=''</td>
+
+                                <td class='orderdatas'>
+                                    <input class='text-center iquantity' onchange='subTotal()' type='number' value='' min='1' max='20'>
+                                </td>
+                                <td class='itotal orderdatas'></td>
+                                <td>
+                                    <form action='ManageCart.php' method='POST'>
+                                        <button name='Remove_Item' class='plusMinusButton'> REMOVE </button>
+                                        <input type='hidden' name='' value=''>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <form action="" method="POST">
+            <div class="col-xl-3 mb-4 pb-3">
+                <div class="border bd-light rounded p-4 orderdatas d-flex flex-column align-items-center">
+                    <h5>Grand Total:</h5>
+                    <h3 class="text-center orderdatas" id="gtotal"></h3>
+                    <br>
+                    <button type="submit" name="submitButton" class="plusMinusButton" onclick="">Confirm Order</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    var gt = 0;
+    var iprice = document.getElementsByClassName('iprice');
+    var iquantity = document.getElementsByClassName('iquantity');
+    var itotal = document.getElementsByClassName('itotal');
+    var gtotal = document.getElementById('gtotal');
+
+    function subTotal() {
+
+
+        gt = 0;
+        for (i = 0; i < iprice.length; i++) {
+            itotal[i].innerText = (iprice[i].value) * (iquantity[i].value);
+            gt = gt + (iprice[i].value) * (iquantity[i].value);
+        }
+        gtotal.innerText = gt;
+        var finalTotal = document.getElementById('gtotal').innerHTML;
+        document.getElementById('finalTotal').value = finalTotal;
+        console.log(finalTotal);
+
+
+
+    }
+
+
+    subTotal();
+</script>
