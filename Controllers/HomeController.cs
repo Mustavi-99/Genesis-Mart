@@ -260,13 +260,53 @@ namespace Genesis_Mart.Controllers
             foreach (var item in CartItems)
             {
                 products.Add(db.Products.Where(temp => temp.PRID.Equals(item)).SingleOrDefault());
-                System.Diagnostics.Debug.WriteLine(item);
+                //System.Diagnostics.Debug.WriteLine(item);
             }
 
             return View(products);
         }
 
-        
+
+    
+        public ActionResult ConfirmOrder(string totalvalue)
+        {
+            
+
+            OrderList orderlist = new OrderList();
+            orderlist.cusEmail = Session["CUSEmail"].ToString();
+            orderlist.totalPrice = Int32.Parse(totalvalue);
+            string items = "";
+            Product prod;
+            foreach (var item in CartItems)
+            {
+                prod = db.Products.Where(temp => temp.PRID.Equals(item)).SingleOrDefault();
+                items = items + prod.PRName + " ";
+            }
+            System.Diagnostics.Debug.WriteLine(items + " "+orderlist.cusEmail+" "+orderlist.totalPrice);
+
+            orderlist.itemName = items;
+            db.OrderLists.Add(orderlist);
+            db.SaveChanges();
+
+            CartItems.Clear();
+
+            return RedirectToAction("Orders");
+        }
+
+        public ActionResult RemoveFromCart(Product product)
+        {
+            var item = CartItems.Single(temp => temp == product.PRID);
+            if(item != null)
+            {
+                CartItems.Remove(item);
+                //System.Diagnostics.Debug.WriteLine("Check");
+            }
+            return RedirectToAction("Orders");
+        }
+
+
+
+
 
     }
 }

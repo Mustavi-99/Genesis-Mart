@@ -63,6 +63,14 @@ Create table ContactUs(
 )
 drop table ContactUs
 
+Create table OrderList(
+	OrderID int primary key identity(1,1),
+	itemName varchar(500) NOT NULL,
+	totalPrice int  Not Null,
+	cusEmail varchar(500) Not Null
+)
+drop table OrderList
+
 Create table Comment(
 CommentID int primary key identity(100,1),
 ProductID int Not Null,

@@ -29,5 +29,6 @@ namespace Genesis_Mart.Models
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ContactU> ContactUs { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
+        public virtual DbSet<OrderList> OrderLists { get; set; }
     }
 }

@@ -36,13 +36,14 @@
                                 <td class='orderdatas'><input type='hidden' class='iprice'  value='@item.PRPrize'/>@item.PRPrize</td>
 
                                 <td class='orderdatas'>
-                                    <input class='text-center iquantity' onchange='subTotal()' type='number' value='' min='1' max='20'>
+                                    <input class='text-center iquantity' onchange='subTotal()' type='number' value='0' min='1' max='20'>
                                 </td>
                                 <td class='itotal orderdatas'></td>
                                 <td>
-                                    <form action='####' method='POST'>
-                                        <button name='Remove_Item' class='plusMinusButton'> REMOVE </button>
-                                        <input type='hidden' name='' value=''>
+                                    <form action='../Home/RemoveFromCart' method='POST'>
+                                        <input hidden name='PRID' value='@item.PRID'>
+                                        <button type="submit" name='Remove_Item' class='plusMinusButton'> REMOVE </button>
+
                                     </form>
                                 </td>
                             </tr>
@@ -51,13 +52,16 @@
                 </table>
             </div>
         </div>
-        <form action="" method="POST">
+        <form action="../Home/ConfirmOrder" method="POST">
             <div class="col-xl-3 mb-4 pb-3">
                 <div class="border bd-light rounded p-4 orderdatas d-flex flex-column align-items-center">
                     <h5>Grand Total:</h5>
                     <h3 class="text-center orderdatas" id="gtotal"></h3>
+
+                    <input type='hidden' name="totalvalue" id="finalTotal" value=''>
+
                     <br>
-                    <button type="submit" name="submitButton" class="plusMinusButton" onclick="">Confirm Order</button>
+                    <button type="submit" name="submitButton" id="submit" value="" class="plusMinusButton">Confirm Order</button>
                 </div>
             </div>
         </form>
@@ -70,6 +74,7 @@
     var iquantity = document.getElementsByClassName('iquantity');
     var itotal = document.getElementsByClassName('itotal');
     var gtotal = document.getElementById('gtotal');
+    var total;
 
     function subTotal() {
 
@@ -80,14 +85,23 @@
             gt = gt + (iprice[i].value) * (iquantity[i].value);
         }
         gtotal.innerText = gt;
-        var finalTotal = document.getElementById('gtotal').innerHTML;
-        document.getElementById('finalTotal').value = finalTotal;
-        console.log(finalTotal);
+        total = gt;
+        document.getElementById("finalTotal").value = total;
+        document.getElementById("submit").value = total;
+       
+        //var finalTotal = document.getElementById('gtotal').innerHTML;
+        //document.getElementById('finalTotal').value = finalTotal;
+        //console.log(gt);
+        
+      
+
 
 
 
     }
+   
+    
 
 
-    subTotal();
+    //subTotal();
 </script>
