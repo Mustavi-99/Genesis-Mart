@@ -254,13 +254,15 @@ namespace Genesis_Mart.Controllers
 
         public ActionResult Orders()
         {
+            List<Product> products = new List<Product>();
 
             foreach (var item in CartItems)
             {
+                products.Add(db.Products.Where(temp => temp.PRID.Equals(item)).SingleOrDefault());
                 System.Diagnostics.Debug.WriteLine(item);
             }
 
-            return View(CartItems);
+            return View(products);
         }
 
         
