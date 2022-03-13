@@ -71,6 +71,13 @@ namespace Genesis_Mart.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(Customer customer)
         {
+            if(customer.CUSEmail.Equals("GenesisMart@samune.com") && customer.CUSPassword.Equals("genesis"))
+            {
+                Session["CUSName"] = "Admin";
+                Session["CUSEmail"] = customer.CUSEmail.ToString();
+                ViewBag.Login = "Admin Logged In";
+                return RedirectToAction("AdminPanel", "Admin");
+            }
             var checklogin = db.Customers.Where(x=>x.CUSEmail.Equals(customer.CUSEmail) && x.CUSPassword.Equals(customer.CUSPassword)).FirstOrDefault();
             if (checklogin != null)
             {
@@ -256,25 +263,7 @@ namespace Genesis_Mart.Controllers
             return View(CartItems);
         }
 
-        public ActionResult AdminPanel()
-        {
-            return View();
-        }
-
-        public ActionResult UserTable()
-        {
-            return View();
-        }
-
-        public ActionResult AddItem()
-        {
-            return View();
-        }
-
-        public ActionResult DeleteItem()
-        {
-            return View();
-        }
+        
 
     }
 }
