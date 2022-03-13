@@ -33,6 +33,11 @@ namespace Genesis_Mart.Controllers
         {
             return View();
         }
+
+        public ActionResult ContactUsTable()
+        {
+            return View();
+        }
     }
 
 
