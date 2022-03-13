@@ -1,6 +1,6 @@
-﻿
+﻿@model List<Genesis_Mart.Models.Customer>
 @{
-    ViewBag.Title = "UserTable";
+    ViewBag.Title = "User Table";
     @Styles.Render("~/Content/css");
 }
 
@@ -13,28 +13,30 @@
             <table class="table table-bordered ordertable">
                 <thead>
                     <tr class="text-align-center">
-                        <th scope="col" class="orderhead">User ID</th>
                         <th scope="col" class="orderhead">User Name</th>
-                        <th scope="col" class="orderhead">Address</th>
                         <th scope="col" class="orderhead">Email</th>
                         <th scope="col" class="orderhead">Contact</th>
+                        <th scope="col" class="orderhead">Address</th>
                         <th scope="col" class="orderhead">Remove</th>
                     </tr>
                 </thead>
                 <tbody class="text-center">
+                    @foreach (var item in Model)
+                    {
                     <tr>
-                        <td class='orderdatas'>1</td>
-                        <td class='orderdatas'>Rahim</td>
-                        <td class='orderdatas'>Dhanmondi</td>
-                        <td class='orderdatas'>rahim@email.com</td>
-                        <td class='orderdatas'>01694206920</td>
+                        <td class='orderdatas'>@item.CUSName</td>
+                        <td class='orderdatas'>@item.CUSEmail</td>
+                        <td class='orderdatas'>@item.CUSContactNo</td>
+                        <td class='orderdatas'>@item.CUSAddress</td>
                         <td>
-                            <form action="" method='POST'>
-                                <button name='' class='plusMinusButton'> REMOVE </button>
-                                <input type='hidden' name='' value=''>
+                            <form action="../Admin/RemoveUser" method='POST'>
+                                <input name="CUSEmail" value="@item.CUSEmail" hidden />
+                                <button name='' type="submit" class='plusMinusButton'> REMOVE </button>
                             </form>
                         </td>
                     </tr>
+                    }
+
                 </tbody>
             </table>
         </div>

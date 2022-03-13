@@ -1,6 +1,6 @@
-﻿
+﻿@model List<Genesis_Mart.Models.ContactU>
 @{
-    ViewBag.Title = "ContactUsTable";
+    ViewBag.Title = "Contact Messages";
     @Styles.Render("~/Content/css");
 }
 
@@ -22,18 +22,22 @@
                     </tr>
                 </thead>
                 <tbody class="text-center">
-                    <tr>
-                        <td class='orderdatas' hidden>1</td>
-                        <td class='orderdatas'>Rahim</td>
-                        <td class='orderdatas'>rahim@email.com</td>
-                        <td class='orderdatas'>Hello Baby.........</td>
-                        <td>
-                            <form action="" method='POST'>
-                                <button name='' class='plusMinusButton'> REMOVE </button>
-                                <input type='hidden' name='' value=''>
-                            </form>
-                        </td>
-                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class='orderdatas' hidden>@item.ContactID</td>
+                            <td class='orderdatas'>@item.FullName</td>
+                            <td class='orderdatas'>@item.Email</td>
+                            <td class='orderdatas'>@item.ContactMessage</td>
+                            <td>
+                                <form action="../Admin/RemoveContact" method='POST'>
+                                    <input name="ContactID" value="@item.ContactID" hidden />
+                                    <button name='' type="submit" class='plusMinusButton'> REMOVE </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+
                 </tbody>
             </table>
         </div>

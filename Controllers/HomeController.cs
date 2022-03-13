@@ -161,10 +161,11 @@ namespace Genesis_Mart.Controllers
                 ViewBag.productCategory = category;
             }
             products = db.Products.SqlQuery(sql).ToList();
-            var resultPerPage = 3;
+            double resultPerPage = 3;
             var pageFirstresult = (p - 1) * resultPerPage;
-            var numberOfresult = products.Count;
-            var numberOfPage = (numberOfresult / resultPerPage);
+            double numberOfresult = products.Count;
+            double numberOfPage = Math.Ceiling(numberOfresult / resultPerPage);
+            System.Diagnostics.Debug.WriteLine(numberOfPage);
             var query = sql + " order by PRID OFFSET "+pageFirstresult+" rows FETCH FIRST "+resultPerPage+" ROWS ONLY";
             products = db.Products.SqlQuery(query).ToList();
             ViewBag.Page = p;
