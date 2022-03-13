@@ -54,11 +54,11 @@
             </div>
             <button type="submit" class="btn btn-success">Comment</button>
         </form>
-            }
-            else
-            {
-                <p>Log In to Comment</p>
-            }
+    }
+    else
+    {
+        <p>Log In to Comment</p>
+    }
 
 
     @* <button type="button" class="btn btn-secondary">Edit</button>*@
@@ -78,12 +78,23 @@
 
     </div>
 </div>
-@*@if (ViewBag.user != null)
+
+@if (ViewBag.AddedItem != null)
 {
-<script type="text/javascript">
+    <script type="text/javascript">
+
         window.onload = function () {
-            alert("@ViewBag.user");
-            window.location.href = "../Login";
-        };
-</script>
-}*@
+        alert("@ViewBag.AddedItem");
+         
+    };
+    </script>
+}
+@*@if (ViewBag.user != null)
+    {
+    <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.user");
+                window.location.href = "../Login";
+            };
+    </script>
+    }*@

@@ -247,9 +247,28 @@ namespace Genesis_Mart.Controllers
 
         public ActionResult AddToCart(int id)
         {
+            bool flag = true;
+            foreach(var item in CartItems)
+            {
+                if(item.Equals(id))
+                {
+                    flag = false;
+                }
+            }
+            if(flag)
+            {
+                CartItems.Add(id);
+                if(Session["CUSEmail"]==null)
+                {
+                    ViewBag.AddedItem = "Login to View Your Cart";
+                }
+            }
+            else
+            {
+                ViewBag.AddedItem = "Item Already in Cart";
+            }
 
-
-            CartItems.Add(id);
+            
             return RedirectToAction("ProductPreview/" + id);
         }
 
