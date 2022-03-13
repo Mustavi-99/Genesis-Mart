@@ -323,6 +323,11 @@ namespace Genesis_Mart.Controllers
             return RedirectToAction("Orders");
         }
 
+        public ActionResult OrderHistory()
+        {
+            return View();
+        }
+
 
 
 
