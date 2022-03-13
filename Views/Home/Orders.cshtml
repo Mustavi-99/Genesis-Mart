@@ -1,4 +1,4 @@
-﻿@model List<int>
+﻿@model List<Genesis_Mart.Models.Product>
 @{
     ViewBag.Title = "Orders";
     @Styles.Render("~/Content/css");
@@ -30,17 +30,17 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td class='orderdatas'>gg</td>
-                                <td class='orderdatas'>gg</td>
+                                <td class='orderdatas'>@item.PRName</td>
+                                <td class='orderdatas'>@item.PRDescription</td>
 
-                                <td class='orderdatas'>@item<input type='hidden' class='iprice' value=''</td>
+                                <td class='orderdatas'><input type='hidden' class='iprice'  value='@item.PRPrize'/>@item.PRPrize</td>
 
                                 <td class='orderdatas'>
                                     <input class='text-center iquantity' onchange='subTotal()' type='number' value='' min='1' max='20'>
                                 </td>
                                 <td class='itotal orderdatas'></td>
                                 <td>
-                                    <form action='ManageCart.php' method='POST'>
+                                    <form action='####' method='POST'>
                                         <button name='Remove_Item' class='plusMinusButton'> REMOVE </button>
                                         <input type='hidden' name='' value=''>
                                     </form>
