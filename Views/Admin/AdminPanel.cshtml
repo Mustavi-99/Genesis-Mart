@@ -24,8 +24,8 @@
     </div>
     <div class="row mt-5 mb-5">
         <div class="col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12">
-            <button class="btn btn-warning w-100  p-5 mb-5 adminbutton">
-                Rental Service
+            <button class="btn btn-warning w-100  p-5 mb-5 adminbutton" onclick="location.href='../Home/OrderHistory'">
+                Order History
             </button>
         </div>
         <div class="col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12">
@@ -43,3 +43,12 @@
     </div>
 </div>
 
+@if (ViewBag.AdminLogin != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@ViewBag.AdminLogin");
+            window.location.href = "../Home/Index";
+        };
+    </script>
+}

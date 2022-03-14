@@ -43,6 +43,12 @@
         </div>
     </div>
 </div>
-
-
-
+@if (ViewBag.AdminLogin != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@ViewBag.AdminLogin");
+            window.location.href = "../Home/Index";
+        };
+    </script>
+}

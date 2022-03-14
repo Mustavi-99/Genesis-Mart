@@ -18,5 +18,6 @@ namespace Genesis_Mart.Models
         public string itemName { get; set; }
         public int totalPrice { get; set; }
         public string cusEmail { get; set; }
+        public Nullable<System.DateTime> orderDate { get; set; }
     }
 }

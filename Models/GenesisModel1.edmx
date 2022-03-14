@@ -41,6 +41,7 @@
           <Property Name="itemName" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="totalPrice" Type="int" Nullable="false" />
           <Property Name="cusEmail" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="orderDate" Type="datetime" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -122,6 +123,7 @@
           <Property Name="itemName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="totalPrice" Type="Int32" Nullable="false" />
           <Property Name="cusEmail" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="orderDate" Type="DateTime" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -177,6 +179,7 @@
           <EntitySetMapping Name="OrderLists">
             <EntityTypeMapping TypeName="GenesisMartModel.OrderList">
               <MappingFragment StoreEntitySet="OrderList">
+                <ScalarProperty Name="orderDate" ColumnName="orderDate" />
                 <ScalarProperty Name="cusEmail" ColumnName="cusEmail" />
                 <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
                 <ScalarProperty Name="itemName" ColumnName="itemName" />

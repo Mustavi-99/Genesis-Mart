@@ -139,6 +139,7 @@ namespace Genesis_Mart.Controllers
             List<Product> products;
             var sql="";
             int p;
+            double resultPerPage;
             if (page==null)
             {
                 p = 1;
@@ -150,7 +151,8 @@ namespace Genesis_Mart.Controllers
             if (category == null)
             {
                 //products = db.Products.ToList();
-                sql = "Select * from Product";               
+                sql = "Select * from Product";
+                resultPerPage = 6;
                 ViewBag.productCategory = "All Products";
             }
             else
@@ -158,10 +160,11 @@ namespace Genesis_Mart.Controllers
                 //products = db.Products.Where(temp => temp.PRType.Equals(category)).ToList();
                 sql = "Select * from Product where PRType = '"+category+"' ";
                 ViewBag.Category = category;
+                resultPerPage = 3;
                 ViewBag.productCategory = category;
             }
             products = db.Products.SqlQuery(sql).ToList();
-            double resultPerPage = 3;
+            
             var pageFirstresult = (p - 1) * resultPerPage;
             double numberOfresult = products.Count;
             double numberOfPage = Math.Ceiling(numberOfresult / resultPerPage);
@@ -226,7 +229,8 @@ namespace Genesis_Mart.Controllers
         {
             if (Session["CUSEmail"] == null)
             {
-                ViewBag.NoUser = "User Needs to Log In";  
+                ViewBag.NoUser = "User Needs to Log In";
+                Session["CUSEmail"] = "abc";
             }
             System.Diagnostics.Debug.WriteLine(Session["CUSName"]);
             string username = Session["CUSEmail"].ToString();
@@ -294,6 +298,7 @@ namespace Genesis_Mart.Controllers
             OrderList orderlist = new OrderList();
             orderlist.cusEmail = Session["CUSEmail"].ToString();
             orderlist.totalPrice = Int32.Parse(totalvalue);
+            orderlist.orderDate=DateTime.Now;
             string items = "";
             Product prod;
             foreach (var item in CartItems)
@@ -325,7 +330,24 @@ namespace Genesis_Mart.Controllers
 
         public ActionResult OrderHistory()
         {
-            return View();
+            List<OrderList> orderList;
+            if (Session["CUSEmail"] == null)
+            {
+                ViewBag.NoUser = "User Needs to Log In";
+                Session["CUSEmail"] = "ABC";
+                orderList = db.OrderLists.Where(temp=> temp.OrderID==0).ToList();
+            }
+            else if (Session["CUSEmail"].ToString().Equals("GenesisMart@samune.com"))
+            {
+                orderList = db.OrderLists.ToList();
+            }
+            else
+            {
+                string email = Session["CUSEmail"].ToString();
+                orderList = db.OrderLists.Where(temp => temp.cusEmail.Equals(email)).ToList();
+            }
+            //System.Diagnostics.Debug.WriteLine(orderList[0].itemName);
+            return View(orderList);
         }
 
 

@@ -12,44 +12,41 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand" href="/Home/Index">Genesis Mart</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarColor01">
-                <ul class="navbar-nav me-auto">
+            <div class="navbar-header">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon light"></span>
+                </button>
+                <a class="navbar-brand" href="/Home/Index">Genesis Mart</a>
+            </div>
+            <div class="navbar-collapse collapse" id="navbarResponsive">
+                <ul class="navbar-nav me-auto" style="align-items:center">
                     <li class="nav-item">
                         <a class="nav-link" href="/Home/Index">
                             Home
                             <span class="visually-hidden">(current)</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Home/ProductPage">Menu</a>
+                    </li>
                     @if (Session["CUSName"] != null)
                     {
                         <li class="nav-item">
-                            <a class="nav-link" href="/Home/ProductPage">Menu</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Rental</a>
+                            <a class="nav-link" href="/Home/OrderHistory">Order History</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/Home/Orders">Order</a>
                         </li>
-                    }
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Home/ContactUs">Contact Us</a>
-                    </li>
-                    
-                    @*<li class="nav-item">
-            <a class="nav-link" href="#">Devs Corner</a>
-        </li>*@
-                </ul>
-                <ul class="nav navbar-nav" style="float:right !important">
-                    @if (Session["CUSName"] != null)
-                    {
                         <li class="nav-item">
-                            <a class="nav-link" href="/Home/CustomerProfile">@Session["CUSName"]</a>
+                            @if (Session["CUSName"] == "Admin")
+                            {
+                                <a class="nav-link" href="/Admin/AdminPanel">@Session["CUSName"]</a>
+                            }
+                            else
+                            {
+                                <a class="nav-link" href="/Home/CustomerProfile">@Session["CUSName"]</a>
+                            }
+
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/Home/Logout">Logout</a>
@@ -64,6 +61,17 @@
                             <a class="nav-link" href="/Home/Login">Login</a>
                         </li>
                     }
+                    @if (Session["CUSName"] == null || Session["CUSName"] != "Admin")
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Home/ContactUs">Contact Us</a>
+                        </li>
+                    }
+
+
+                    @*<li class="nav-item">
+            <a class="nav-link" href="#">Devs Corner</a>
+        </li>*@
                 </ul>
             </div>
         </div>
@@ -85,15 +93,15 @@
                                 <a class="footwrite" href="/Home/Index">Home</a>
                             </p>
                             <p>
-                            <p>
+                            @*<p>
                                 <a class="footwrite" href="#">About</a>
-                            </p>
+                            </p>*@
                             <p>
                                 <a class="footwrite" href="/Home/ContactUs">Contact Us</a>
                             </p>
-                            <p>
+                            @*<p>
                                 <a class="footwrite" href="#">Devs Corner</a>
-                            </p>
+                            </p>*@
                         </div>
                         <div class="col-md-4 text-center">
                             <p>

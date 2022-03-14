@@ -23,18 +23,18 @@
                 <tbody class="text-center">
                     @foreach (var item in Model)
                     {
-                    <tr>
-                        <td class='orderdatas'>@item.CUSName</td>
-                        <td class='orderdatas'>@item.CUSEmail</td>
-                        <td class='orderdatas'>@item.CUSContactNo</td>
-                        <td class='orderdatas'>@item.CUSAddress</td>
-                        <td>
-                            <form action="../Admin/RemoveUser" method='POST'>
-                                <input name="CUSEmail" value="@item.CUSEmail" hidden />
-                                <button name='' type="submit" class='plusMinusButton'> REMOVE </button>
-                            </form>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td class='orderdatas'>@item.CUSName</td>
+                            <td class='orderdatas'>@item.CUSEmail</td>
+                            <td class='orderdatas'>@item.CUSContactNo</td>
+                            <td class='orderdatas'>@item.CUSAddress</td>
+                            <td>
+                                <form action="../Admin/RemoveUser" method='POST'>
+                                    <input name="CUSEmail" value="@item.CUSEmail" hidden />
+                                    <button name='' type="submit" class='plusMinusButton'> REMOVE </button>
+                                </form>
+                            </td>
+                        </tr>
                     }
 
                 </tbody>
@@ -42,4 +42,12 @@
         </div>
     </div>
 </div>
-
+@if (ViewBag.AdminLogin != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@ViewBag.AdminLogin");
+            window.location.href = "../Home/Index";
+        };
+    </script>
+}

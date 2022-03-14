@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<Genesis_Mart.Models.OrderList>
+@{
     ViewBag.Title = "OrderHistory";
     @Styles.Render("~/Content/css")
 }
@@ -12,20 +13,41 @@
             <table class="table table-bordered ordertable">
                 <thead>
                     <tr class="text-align-center">
-                        <th scope="col" class="orderhead">User ID</th>
-                        <th scope="col" class="orderhead">Item Name</th>
+                        @if (Session["CUSEmail"].ToString().Equals("GenesisMart@samune.com"))
+                        {
+                            <th scope="col" class="orderhead">User Email</th>
+                        }
+                        <th scope="col" class="orderhead">Item Names</th>
                         <th scope="col" class="orderhead">Price</th>
+                        <th scope="col" class="orderhead">Order Date</th>
                     </tr>
                 </thead>
                 <tbody class="text-center">
+                    @foreach (var item in Model)
+                    {
                     <tr>
-                        <td class='orderdatas'>UserId</td>
-                        <td class='orderdatas'>Itme Name</td>
-                        <td class='orderdatas'>200/=</td>
+                        @if (Session["CUSEmail"].ToString().Equals("GenesisMart@samune.com"))
+                        {
+                            <td class='orderdatas'>@item.cusEmail</td>
+                        }
+                        <td class='orderdatas'>@item.itemName</td>
+                        <td class='orderdatas'>@item.totalPrice/=</td>
+                        <td class='orderdatas'>@item.orderDate</td>
                     </tr>
+                    }
+
                 </tbody>
             </table>
         </div>
     </div>
 </div>
 
+@if (ViewBag.NoUser != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@ViewBag.NoUser");
+            window.location.href = "Index";
+        };
+    </script>
+}

@@ -1,63 +1,78 @@
-﻿
+﻿@model Genesis_Mart.Models.Product
 @{
-    ViewBag.Title = "AddItem";
+    ViewBag.Title = "Add Item";
     @Styles.Render("~/Content/css");
 }
-
-
-
 <div class="container">
-    <div class="row m-3 pt-1">
-        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 menuall">
-            <img src="~/images/xbox.png">
+    <form method="post" action="../Admin/ItemAdd">
+        @*<div class="row m-3 pt-1">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 menuall">
+                    <img src="~/images/xbox.png">
+                </div>
+            </div>*@
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div>
+                    <label class="mb-3 upload">Upload Image here</label>
+                    <input type="file" id="file" name="FileName">
+                    <label for="file">
+                        <i class="fa fa-camera"></i>
+                        Choose a photo
+                    </label>
+                </div>
+                @*<div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Upload" class="btn btn-primary" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10 text-success">
+                            @ViewBag.FileStatus
+                        </div>
+                    </div>*@
+
+                <div class="form-group formbox mb-3">
+                    <label class="mb-3 formlabel">Name</label>
+                    <input type="text" placeholder="" name="PRName" value="" class="form-control" />
+                </div>
+                <div class="form-group formbox mb-3">
+                    <label class="mb-3 formlabel">Description</label>
+                    <input type="text" placeholder="" name="PRDescription" value="" class="form-control" />
+                </div>
+                <div class="form-group formbox mb-3">
+                    <label class="mb-3 formlabel">Rating</label>
+                    <input type="number" placeholder="" name="PRRating" value="" class="form-control" />
+                </div>
+                <div class="form-group formbox mb-3">
+                    <label class="mb-3 formlabel">Type</label>
+                    <input type="text" placeholder="Set prize" name="PRType" value="" class="form-control mb-2" />
+                </div>
+                <div class="form-group formbox mb-3">
+                    <label class="mb-3 formlabel">Prize</label>
+                    <input type="number" placeholder="Set prize" name="PRPrize" value="" class="form-control mb-2" />
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-            <div>
-                <label class="mb-3 upload">Upload Image here</label>
-                <input type="file" id="file" accept="image/*">
-                <label for="file">
-                    <i class="fa fa-camera"></i>
-                    Choose a photo
-                </label>
+        <div class="row mb-5">
+            <div class="col-6">
+                <button type="submit" class="btn btn-success w-100">
+                    Add Item
+                </button>
             </div>
-            <div class="form-group formbox mb-3">
-                <label class="mb-3 formlabel">Name</label>
-                <input type="text" placeholder="" name="itemname" value="" class="form-control" />
-            </div>
-            <div class="form-group formbox mb-3">
-                <label class="mb-3 formlabel">Description</label>
-                <input type="text" placeholder="" name="itemdes" value="" class="form-control" />
-            </div>
-            <div class="form-group formbox mb-3">
-                <label class="mb-3 formlabel">Quantity</label>
-                <input type="number" placeholder="" name="itemquan" value="" class="form-control" />
-            </div>
-            <div class="form-group formbox mb-3">
-                <label class="mb-3 formlabel">Prize</label>
-                <input type="text" placeholder="Set prize" name="itemdes" value="" class="form-control mb-2" />
-            </div>
+            @*<div class="col-6">
+                    <button class="btn btn-danger w-100">
+                        Edit Item
+                    </button>
+                </div>*@
         </div>
-    </div>
-    <div class="row mb-5">
-        <div class="col-6">
-            <button class="btn btn-success w-100">
-                Add Item
-            </button>
-        </div>
-        <div class="col-6">
-            <button class="btn btn-danger w-100">
-                Edit Item
-            </button>
-        </div>
-    </div>
+    </form>
 </div>
-
-
-
-
-
-
-
-
+@if (ViewBag.AdminLogin != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@ViewBag.AdminLogin");
+            window.location.href = "../Home/Index";
+        };
+    </script>
+}
